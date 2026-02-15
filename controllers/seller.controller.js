@@ -20,7 +20,7 @@ export const sellerLogin = async (req, res) => {
             { expiresIn: "7d" }
         );
 
-        res.clearCookie("userToken");
+        // res.clearCookie("userToken");
 
         res.cookie("sellerToken", token, {
             httpOnly: true,
