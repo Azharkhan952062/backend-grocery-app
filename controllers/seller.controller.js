@@ -26,7 +26,6 @@ export const sellerLogin = async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: "none",
-            domain: ".onrender.com",
             path: "/",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         });

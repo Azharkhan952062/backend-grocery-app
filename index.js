@@ -17,15 +17,14 @@ import orderRoutes from "./routes/order.routes.js";
 import addressRoutes from "./routes/address.routes.js";
 import { connectCloudinary } from "./config/cloudinary.js";
 
-const app = express();
 
 connectDB();
 connectCloudinary();
 //const allowedOrigins = ["http://localhost:5173"];
 // middleware;
 
-app.use(express.json());
 // app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+const app = express();
 app.set("trust proxy", 1);
 
 app.use(
@@ -35,15 +34,8 @@ app.use(
     })
 );
 
-
+app.use(express.json());
 app.use(cookieParser());
-app.use((req, res, next) => {
-    const proto = req.headers["x-forwarded-proto"];
-    if (proto && proto !== "https") {
-        return res.redirect("https://" + req.headers.host + req.url);
-    }
-    next();
-});
 
 //Api Endpoints;
 app.use("/images", express.static("uploads"));
